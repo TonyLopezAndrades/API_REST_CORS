@@ -1,0 +1,47 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <!-- FORMULARIO -->
+    <div class="col-md-5 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <form action="/edit/<%= user._id %>" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="<%= user.nombre %>" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="apellido" placeholder="Apellido" value="<%= user.apellido %>" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" name="edad" placeholder="Edad" value="<%= user.edad %>" pattern="[0-9]{0,125}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="dni" placeholder="DNI" value="<%= user.dni %>" pattern="[A-Za-z0-9]{9}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="date" name="fechaNacimiento" placeholder="Fecha Nacimiento" value="<%= user.fechaNacimiento %>">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="colorFavorito" placeholder="Color Favorito" value="<%= user.colorFavorito %>" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <label for="genero">Género:</label>
+              <select name="genero" id="genero">
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="otro">Otro</option>
+                <option value="s/n">Sin Especificar</option>
+              </select> 
+            </div>
+            <button class="btn btn-primary" type="submit">
+              Modificar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer%>

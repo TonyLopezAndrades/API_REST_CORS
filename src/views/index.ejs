@@ -1,0 +1,90 @@
+<% include partials/_header %>
+
+<div class="container">
+
+  <div class="row">
+    <!-- FORMULARIO -->
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form action="/add" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Nombre" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="apellido" placeholder="Apellido" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="number" name="edad" placeholder="Edad" pattern="[0-9]{0,125}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="dni" placeholder="DNI" pattern="[A-Za-z0-9]{9}">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="date" name="fechaNacimiento" placeholder="Fecha Nacimiento">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="colorFavorito" placeholder="Color Favorito" pattern="[A-Za-z]{3,15}">
+            </div>
+            <div class="form-group">
+              <label for="genero">Género:</label>
+              <select name="genero" id="genero">
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="otro">Otro</option>
+                <option value="s/n">Sin Especificar</option>
+              </select> 
+            </div>
+            <button class="btn btn-primary" type="submit">
+              Añadir
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTA DE USUARIOS -->
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>DNI</th>
+            <th>Fecha Nacimiento</th>
+            <th>Color Favorito</th>
+            <th>Género</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < users.length; i++) { %>
+            <tr>
+              <td><%= i + 1%></td>
+              <td><strong><%= users[i].nombre %></strong></td>
+              <td><%= users[i].apellido %></td>
+              <td><%= users[i].edad %></td>
+              <td><%= users[i].dni %></td>
+              <td><%= users[i].fechaNacimiento %></td>
+              <td><%= users[i].colorFavorito %></td>
+              <td><%= users[i].genero %></td>
+              <td>
+                <a href="/delete/<%= users[i]._id %>"
+                  class="btn btn-danger">
+                  Borrar
+                </a>
+                <a href="/edit/<%= users[i]._id %>" class="btn btn-info">
+                  Editar
+                </a>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
